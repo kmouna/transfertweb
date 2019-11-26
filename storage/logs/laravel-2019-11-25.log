@@ -1,0 +1,21 @@
+[2019-11-25 12:49:29] local.ERROR: Command "adminlte:make" is not defined.
+
+Did you mean one of these?
+    adminlte:install
+    adminlte:plugins
+    adminlte:status{--include-images
+    adminlte:update {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"adminlte:make\" is not defined.
+
+Did you mean one of these?
+    adminlte:install
+    adminlte:plugins
+    adminlte:status{--include-images
+    adminlte:update at F:\\xampp\\htdocs\\transfert\\vendor\\symfony\\console\\Application.php:660)
+[stacktrace]
+#0 F:\\xampp\\htdocs\\transfert\\vendor\\symfony\\console\\Application.php(237): Symfony\\Component\\Console\\Application->find('adminlte:make')
+#1 F:\\xampp\\htdocs\\transfert\\vendor\\symfony\\console\\Application.php(149): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 F:\\xampp\\htdocs\\transfert\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(90): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 F:\\xampp\\htdocs\\transfert\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 F:\\xampp\\htdocs\\transfert\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
