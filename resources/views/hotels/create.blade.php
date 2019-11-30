@@ -103,13 +103,19 @@
                                 {!! Form::label('logo', 'Logo') !!}
 
                                 <div class="input-group">
+                                   {{-- <div class="col-sm-8">
 
+                                        {!! Form::file('photo',array('onchange'=>'previewFile()')) !!}
+                                        <img src="{{asset ('storage/photos')}}/{{$touriste->photo}}" style="width:200px" id="previewImg">
+                                                       {!! Form::hidden ('photo',$touriste->photo) !!}
+                                         </div>
+                                    --}}
                                     <div class="input-group-addon">
                                         {!! Form::file('logo', ['class' => 'form-control','required' =>
-                                        'required']) !!}
+                                        'required', 'onchange'=>'previewFile()']) !!}
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="{{asset('admin/dist/img/hotel-logo.png')}}" class="direct-chat-img"
+                                        <img src="" id="previewImg" class="direct-chat-img"
                                             alt="User Image" />
                                     </div>
                                 </div>

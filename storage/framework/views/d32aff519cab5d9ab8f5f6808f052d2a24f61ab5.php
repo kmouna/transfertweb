@@ -115,13 +115,14 @@
 
                                 <div class="input-group">
 
+
                                     <div class="input-group-addon">
                                         <?php echo Form::file('logo', ['class' => 'form-control','required' =>
-                                        'required']); ?>
+                                        'required', 'onchange'=>'previewFile()']); ?>
 
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="<?php echo e(asset('admin/dist/img/hotel-logo.png')); ?>" class="direct-chat-img"
+                                        <img src="" id="previewImg" class="direct-chat-img"
                                             alt="User Image" />
                                     </div>
                                 </div>
