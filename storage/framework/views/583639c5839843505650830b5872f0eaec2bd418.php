@@ -124,8 +124,8 @@
             document.getElementById('departTransglobal').value = x;
          });
          $("#harrTransGlobal").on("keydown keyup", function(){
-                   var y = document.getElementById('harrTransGlobal').value ;
-                   document.getElementById('arriveeTransglobal').value =  y;
+            var y = document.getElementById('harrTransGlobal').value ;
+            document.getElementById('arriveeTransglobal').value =  y;
          });
 
       });
@@ -146,18 +146,18 @@
         }
       }
       function previewFile() {
-var preview = document.querySelector('#previewImg');
-var file    = document.querySelector('input[type=file]').files[0];
-var reader  = new FileReader();
+        var preview = document.querySelector('#previewImg');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
 
-reader.addEventListener("load", function () {
-  preview.src = reader.result;
-}, false);
+        reader.addEventListener("load", function () {
+            preview.src = reader.result;
+            }, false);
 
-if (file) {
-reader.readAsDataURL(file);
-}
-}
+            if (file) {
+            reader.readAsDataURL(file);
+            }
+      }
     </script>
 </body>
 

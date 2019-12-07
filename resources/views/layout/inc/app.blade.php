@@ -124,8 +124,8 @@
             document.getElementById('departTransglobal').value = x;
          });
          $("#harrTransGlobal").on("keydown keyup", function(){
-                   var y = document.getElementById('harrTransGlobal').value ;
-                   document.getElementById('arriveeTransglobal').value =  y;
+            var y = document.getElementById('harrTransGlobal').value ;
+            document.getElementById('arriveeTransglobal').value =  y;
          });
 
       });

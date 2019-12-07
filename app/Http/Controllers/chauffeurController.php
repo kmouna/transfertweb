@@ -82,6 +82,7 @@ class chauffeurController extends Controller
         $chauffeur->telfixe = 0;
         $chauffeur->mobile = $request->input('mobile');
         $chauffeur->email = $request->input('email');
+        $chauffeur->motpasse = $request->input('motpasse');
         $chauffeur->photo = $fich;
         $chauffeur->note = 0;
         $chauffeur->save();
@@ -135,7 +136,22 @@ class chauffeurController extends Controller
             'prenom' => 'required',
             'mobile' => 'required',
             'email' => 'required',
+            'motpasse' => 'required',
+            'photo' =>'image|nullable|max:10.000])'
         ]);
+
+        if($request->hasFile('photo'))
+        {
+            $fichComplet = $request->file('photo')->getClientOriginalName ();
+            $nomFich = pathinfo($fichComplet, PATHINFO_FILENAME );
+            $extension  = $request->file('photo')->getClientOriginalExtension ();
+            $fich = $nomFich.'-'.time ().'.'.$extension;
+            $chemin = $request->file('photo')->storeAs('public/chauffeurs',$fich);
+        }
+        else
+        {
+            $fich = $request->input('cachenomphoto');
+        }
 
         $chauffeur = Chauffeur::find($id);
         $chauffeur->nom = $request->input('nom');
@@ -145,7 +161,8 @@ class chauffeurController extends Controller
         $chauffeur->telfixe = 0;
         $chauffeur->mobile = $request->input('mobile');
         $chauffeur->email = $request->input('email');
-        $chauffeur->photo = $request->input('photo');
+        $chauffeur->motpasse = $request->input('motpasse');
+        $chauffeur->photo = $fich;//$request->input('photo');
         $chauffeur->note = 0;
         $chauffeur->save();
 

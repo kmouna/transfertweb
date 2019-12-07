@@ -115,8 +115,9 @@
                                         'required', 'onchange'=>'previewFile()']) !!}
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="" id="previewImg" class="direct-chat-img"
-                                            alt="User Image" />
+                                        <img src="{{asset('admin/dist/img/hotel-logo.png')}}" id="previewImg" class="direct-chat-img"
+                                            alt="Aperçu" />
+
                                     </div>
                                 </div>
 

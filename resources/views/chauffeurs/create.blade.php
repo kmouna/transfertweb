@@ -59,7 +59,8 @@
                                     '[0-9]{8}','placeholder' => 'N° Mobile','required' => 'required']) !!}
                                 </div>
                             </div>
-                            <div class="form-group">
+
+                            <div class="form-group col-md-6">
                                 {!! Form::label('email', 'Email') !!}
                                 <div class="input-group">
                                     <div class="input-group-addon">
@@ -70,6 +71,17 @@
                                     'chauffeur@email.com','required' => 'required']) !!}
                                 </div>
                             </div>
+                            <div class="form-group col-md-6">
+                                {!! Form::label('motpasse', 'Mot de passe') !!}
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </div>
+                                    {!! Form::password ('motpasse', ['class' => 'form-control',
+                                    'required' => 'required']) !!}
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 {!! Form::label('photo', 'Photo') !!}
 
@@ -80,7 +92,7 @@
                                         'required' => 'required']) !!}
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="{{asset('admin/dist/img/avatar5.png')}}" class="direct-chat-img"
+                                        <img src="{{asset('admin/dist/img/avatar.png')}}" class="direct-chat-img"
                                             alt="User Image" />
                                     </div>
                                 </div>

@@ -66,7 +66,8 @@
 
                                 </div>
                             </div>
-                            <div class="form-group">
+
+                            <div class="form-group col-md-6">
                                 <?php echo Form::label('email', 'Email'); ?>
 
                                 <div class="input-group">
@@ -79,6 +80,19 @@
 
                                 </div>
                             </div>
+                            <div class="form-group col-md-6">
+                                <?php echo Form::label('motpasse', 'Mot de passe'); ?>
+
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </div>
+                                    <?php echo Form::password ('motpasse', ['class' => 'form-control',
+                                    'required' => 'required']); ?>
+
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <?php echo Form::label('photo', 'Photo'); ?>
 
@@ -91,7 +105,7 @@
 
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="<?php echo e(asset('admin/dist/img/avatar5.png')); ?>" class="direct-chat-img"
+                                        <img src="<?php echo e(asset('admin/dist/img/avatar.png')); ?>" class="direct-chat-img"
                                             alt="User Image" />
                                     </div>
                                 </div>
