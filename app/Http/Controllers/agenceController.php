@@ -57,16 +57,27 @@ class agenceController extends Controller
                 'responsable' => 'required',
                 'mobile' => 'required',
                 'email' => 'required',
-                'logo' => 'required',
+                'logo' =>'image|nullable|max:30.000])'
             ]);
-
+            if($request->hasFile('logo'))
+            {
+                $fichComplet = $request->file('logo')->getClientOriginalName ();
+                $nomFich = pathinfo($fichComplet, PATHINFO_FILENAME );
+                $extension  = $request->file('logo')->getClientOriginalExtension ();
+                $fich = $nomFich.'-'.time ().'.'.$extension;
+                $chemin = $request->file('logo')->storeAs('public/agences',$fich);
+            }
+            else
+            {
+                $fich = 'agence-logo.png';
+            }
             $agence = new Agence;
             $agence->nom = $request->input('nom');
             $agence->Responsable = $request->input('responsable');
             $agence->mobile = $request->input('mobile');
             $agence->telFixe = $request->input('telfixe');
             $agence->email = $request->input('email');
-            $agence->logo = $request->input('logo');
+            $agence->logo = $fich;
             $agence->adresse = $request->input('adresse');
             $agence->save();
             /*$notification = array(
@@ -75,7 +86,7 @@ class agenceController extends Controller
             );
 
             return redirect('agences')->with($notification);*/
-            $msg = 'Agence ajoutée avec succès';
+            //$msg = 'Agence ajoutée avec succès';
             return redirect('agences');//->with('success','msg');
     }
 
@@ -118,8 +129,20 @@ class agenceController extends Controller
             'responsable' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'logo' => 'required',
-        ]);
+            'logo' =>'image|nullable|max:30.000])'
+            ]);
+            if($request->hasFile('logo'))
+            {
+                $fichComplet = $request->file('logo')->getClientOriginalName ();
+                $nomFich = pathinfo($fichComplet, PATHINFO_FILENAME );
+                $extension  = $request->file('logo')->getClientOriginalExtension ();
+                $fich = $nomFich.'-'.time ().'.'.$extension;
+                $chemin = $request->file('logo')->storeAs('public/agences',$fich);
+            }
+            else
+            {
+                $fich = $request->input('cachenomlogoagence');
+            }
 
         $agence = Agence::find($id);
         $agence->nom = $request->input('nom');
@@ -127,7 +150,7 @@ class agenceController extends Controller
         $agence->mobile = $request->input('mobile');
         $agence->telFixe = $request->input('telfixe');
         $agence->email = $request->input('email');
-        $agence->logo = $request->input('logo');
+        $agence->logo = $fich;
         $agence->adresse = $request->input('adresse');
         $agence->save();
 

@@ -26,11 +26,11 @@ Route::resource('/transfertsIntermediaires','transIntermediaireController');
 Route::resource('/transferts','transfertController');
 //Route::resource('/notifications','notificationController');
 
+Route::get('/', 'dashBoardController@index');
 
-
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('index');
-});
+});*/
 
 });
 

@@ -148,8 +148,14 @@ class transIntermediaireController extends Controller
 
         $transfert = Transfert::find($transIntermediaire->id_transfert);
         $transfert->nbpersonnes = $request->input('cachenbpTotal');
-        $transfert->heure_d = $request->input('cachedepartTransglobal');
-        $transfert->heure_a = $request->input('cachearriveeTransglobal');
+
+        /*<!-- à corriger lors de la mise à jour : il vaut mieux qu'elle soit à part-->
+        if($request->input('cachedepartTransglobal') != null){
+            $transfert->heure_d = $request->input('cachedepartTransglobal');
+        }
+        if($request->input('cachearriveeTransglobal') != null){
+            $transfert->heure_a = $request->input('cachearriveeTransglobal');
+        }*/
         $transfert->save();
 
         return back();//'hellooo';

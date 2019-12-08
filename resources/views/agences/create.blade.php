@@ -27,7 +27,8 @@
                 <div class="box-body">
                         <div class="row">
                             <div class="col-md-6">
-                                {!! Form::open(['action' => 'agenceController@store', 'method' => 'POST']) !!}
+                                {!! Form::open(['action' => 'agenceController@store',
+                                'method' => 'POST', 'enctype'=>'multipart/form-data']) !!}
                                 <div class="form-group">
                                     {!! Form::label('nom', 'Nom') !!}
                                     {!! Form::text('nom','', ['class' => 'form-control', 'placeholder' => 'Nom Agence',
@@ -80,26 +81,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('logo', 'Logo') !!}
+                                        {!! Form::label('logo', 'Logo') !!}
 
-                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                {!! Form::file('logo', ['class' => 'form-control',
+                                                'onchange'=>'previewFile()']) !!}
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <img src="{{asset('admin/dist/img/agence-logo.png')}}"
+                                                id="previewImg" class="direct-chat-img"
+                                                    alt="Aperçu logo agence" />
 
-                                        <div class="input-group-addon">
-                                            {!! Form::file('logo',null, ['class' => 'form-control','required' =>
-                                            'required']) !!}
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <img src="{{asset('admin/dist/img/agence-logo.png')}}" class="direct-chat-img"
-                                                alt="User Image" />
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                </div>
                             </div>
-                            </div-->
-
-
                         </div>
                         <div class="row">
                             <div class="col-md-12">

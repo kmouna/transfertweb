@@ -22,7 +22,8 @@
                     <h3 class="box-title">Ajout d'un Chauffeur</h3>
                 </div>
                 <!-- /.box-header -->
-{!! Form::open(['action' => 'chauffeurController@store', 'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['action' => 'chauffeurController@store', 'method' =>
+                'POST','enctype'=>'multipart/form-data']) !!}
 
                 <div class="box-body">
                     <div class="row">
@@ -30,11 +31,13 @@
 
                             <div class="form-group">
                                 {!! Form::label('nom', 'Nom') !!}
-                                {!! Form::text('nom','', ['class' => 'form-control', 'placeholder' => 'Nom chauffeur','required' => 'required']) !!}
+                                {!! Form::text('nom','', ['class' => 'form-control', 'placeholder' => 'Nom chauffeur',
+                                'required' => 'required']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('prenom', 'Prénom') !!}
-                                {!! Form::text('prenom','', ['class' => 'form-control', 'placeholder' => 'Prénom Chauffeur','required' => 'required']) !!}
+                                {!! Form::text('prenom','', ['class' => 'form-control',
+                                'placeholder' => 'Prénom Chauffeur','required' => 'required']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('datenais', 'Date de naissance') !!}
@@ -75,7 +78,7 @@
                                 {!! Form::label('motpasse', 'Mot de passe') !!}
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="glyphicon glyphicon-envelope"></i>
+                                        <i class="fa fa-lock"></i>
                                     </div>
                                     {!! Form::password ('motpasse', ['class' => 'form-control',
                                     'required' => 'required']) !!}
@@ -86,18 +89,16 @@
                                 {!! Form::label('photo', 'Photo') !!}
 
                                 <div class="input-group">
-
                                     <div class="input-group-addon">
-                                        {!! Form::file('photo',['class' => 'form-control',
-                                        'required' => 'required']) !!}
+                                        {!! Form::file('photo', ['class' => 'form-control',
+                                         'onchange'=>'previewFile()']) !!}
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="{{asset('admin/dist/img/avatar.png')}}" class="direct-chat-img"
-                                            alt="User Image" />
+                                        <img src="{{asset('admin/dist/img/avatar.png')}}" id="previewImg"
+                                            class="direct-chat-img" alt="Aperçu photo chauffeur" />
+
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -108,13 +109,13 @@
                                 {!! Form::label('adresse', 'Adresse') !!}
                                 {!! Form::textarea('adresse','', ['class' => 'form-control textarea']) !!}
                             </div>
-                                {!! Form::submit('Ajouter', ['class' => 'btn btn-success']) !!}
+                            {!! Form::submit('Ajouter', ['class' => 'btn btn-success']) !!}
                         </div>
 
 
                     </div>
                 </div> <!-- /.box-body -->
-{!! Form::close() !!}
+                {!! Form::close() !!}
 
             </div><!-- /.box -->
 

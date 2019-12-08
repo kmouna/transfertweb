@@ -34,14 +34,11 @@
                         <td>{{$unTransfert->heure_d}}</td>
                         <td>{{$unTransfert->heure_a}}</td>
                         <td>{{$unTransfert->origine}}</td>
-                        <td>
-                            @if($unTransfert->retarde == 0)
-                            {{$rep = 'Non'}}
-                            @else
-                            {{$rep ='Oui'}}
-                            @endif
-                        </td>
-
+                        @if($unTransfert->retarde == 1)
+                        <td style="font-weight:bold;color:red">Oui</td>
+                        @else
+                        <td>Non</td>
+                        @endif
                         <td>{{$unTransfert->nbpersonnes}}</td>
                         <td>
                             <a href="transferts/{{$unTransfert->id}}" class="btn btn-warning btn-xs">
@@ -52,7 +49,35 @@
 
                             @if($unTransfert->origine == 'Aéroport')
 
-                            <a href="{{asset('transferts')}}/{{$unTransfert->id}}/edit" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-time"></i></a>
+                            <!--a href="{{asset('transferts')}}/{{$unTransfert->id}}/edit" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-time"></i></a-->
+                            <a type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                                data-target="#modal-retard-{{$unTransfert->id}}">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </a>
+                            <div class="modal modal-primary fade" id="modal-retard-{{$unTransfert->id}}">
+                                {!! Form::open(['action' => ['transfertController@update',
+                                $unTransfert->id],'method'=>'PUT']) !!}
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Retard du Transfert</h4>
+                                        </div>
+                                        <div class="modal-body"
+                                            style="color:#367FA9!important;background-color: white!important">
+                                            <p>Etes vous sûr(e) de confirmer le retard de ce transfert ?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline pull-left"
+                                                data-dismiss="modal">Non</button>
+                                            <button type="submit" class="btn btn-outline">Oui</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                                {!! Form::close() !!}
+                            </div>
+                            <!-- /.modal -->
 
                             @endif
 

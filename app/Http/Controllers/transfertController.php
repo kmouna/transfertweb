@@ -19,7 +19,7 @@ class transfertController extends Controller
         $tsTransferts = DB::table('transferts')
         ->join('chauffeurs', 'transferts.id_chauffeur', '=', 'chauffeurs.id')
         ->select('transferts.*', 'chauffeurs.nom','chauffeurs.prenom')
-        ->orderby('created_at','desc')
+        ->orderby('date','desc')
         ->get();
         //->paginate(5);
 
@@ -106,7 +106,10 @@ class transfertController extends Controller
         //Recherche du nom et prenom chauffeur
         $leChauffeur = Chauffeur::where('id','=',$leTransfert->id_chauffeur)->get()->first();;
        // var_dump($leChauffeur);
-       $ttesLignes = TransfertIntermediaire::where('id_transfert','=',$id)->get();
+       $ttesLignes = TransfertIntermediaire::where('id_transfert','=',$id)
+       ->orderby('date_trans','desc')
+       ->orderby('id_vol')
+       ->get();
         return view('transferts.show',compact('leTransfert','tsTransfertsOrigineEnAttente','leChauffeur','ttesLignes'));
     }
 
@@ -132,8 +135,20 @@ class transfertController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $trans =  Transfert::find($id);
+        $trans->retarde = 1;
+        $trans->save();
+        $tsSesTransInters = TransfertIntermediaire::where('id_transfert','=',$id)->get();
+        if($tsSesTransInters!=null)
+        {
+            foreach($tsSesTransInters as $unTrans)
+            {
+            $unTrans->heure_d_retard = 1;
+            $unTrans->save();
+            }
+        }
 
-       // return redirect('transferts');
+       return redirect('transferts');
     }
 
     /**

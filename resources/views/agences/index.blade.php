@@ -30,7 +30,7 @@
             <tbody>
                 @foreach($ttesAgences as $agence)
                 <tr>
-                    <td><img src="{{asset('admin/dist/img/agence-logo.png')}}" class="direct-chat-img" alt="User Image">
+                    <td><img src="{{asset('storage/agences')}}/{{$agence->logo}}" class="direct-chat-img" alt="Agence logo">
                         {{--$agence->photo--}}</td>
                     <td>{{$agence->nom}}</td>
                     <td>{{$agence->Responsable}}</td>

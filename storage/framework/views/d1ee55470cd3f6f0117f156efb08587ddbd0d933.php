@@ -25,7 +25,8 @@
                 <div class="box-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <?php echo Form::open(['action' => 'agenceController@store', 'method' => 'POST']); ?>
+                                <?php echo Form::open(['action' => 'agenceController@store',
+                                'method' => 'POST', 'enctype'=>'multipart/form-data']); ?>
 
                                 <div class="form-group">
                                     <?php echo Form::label('nom', 'Nom'); ?>
@@ -88,28 +89,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <?php echo Form::label('logo', 'Logo'); ?>
+                                        <?php echo Form::label('logo', 'Logo'); ?>
 
 
-                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <?php echo Form::file('logo', ['class' => 'form-control',
+                                                'onchange'=>'previewFile()']); ?>
 
-                                        <div class="input-group-addon">
-                                            <?php echo Form::file('logo',null, ['class' => 'form-control','required' =>
-                                            'required']); ?>
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <img src="<?php echo e(asset('admin/dist/img/agence-logo.png')); ?>"
+                                                id="previewImg" class="direct-chat-img"
+                                                    alt="Aperçu logo agence" />
 
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <img src="<?php echo e(asset('admin/dist/img/agence-logo.png')); ?>" class="direct-chat-img"
-                                                alt="User Image" />
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                </div>
                             </div>
-                            </div-->
-
-
                         </div>
                         <div class="row">
                             <div class="col-md-12">

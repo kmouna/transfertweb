@@ -25,7 +25,8 @@
                 <div class="box-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <?php echo Form::open(['action' => ['agenceController@update',$uneAgence->id], 'method' => 'PUT']); ?>
+                                <?php echo Form::open(['action' => ['agenceController@update',$uneAgence->id],
+                                'method' => 'PUT', 'enctype'=>'multipart/form-data']); ?>
 
                                 <div class="form-group">
                                     <?php echo Form::label('nom', 'Nom'); ?>
@@ -88,24 +89,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <?php echo Form::label('logo', 'Logo'); ?>
+                                        <?php echo Form::label('logo', 'Logo'); ?>
 
 
-                                    <div class="input-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                <?php echo Form::file('logo', ['class' => 'form-control',
+                                                'onchange'=>'previewFile()']); ?>
 
-                                        <div class="input-group-addon">
-                                            <?php echo Form::text('logo',$uneAgence->logo, ['class' => 'form-control','required' =>
-                                            'required']); ?>
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <img src="<?php echo e(asset('storage/agences')); ?>/<?php echo e($uneAgence->logo); ?>" id="previewImg"
+                                                    class="direct-chat-img" alt="Agence logo" />
+                                                    <?php echo e(Form::hidden('cachenomlogoagence',$uneAgence->logo,
+                                                    ['class' => 'form-control'])); ?>
 
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <img src="<?php echo e(asset('admin/dist/img/agence-logo.png')); ?>" class="direct-chat-img"
-                                                alt="User Image" />
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                </div>
                             </div>
                             </div-->
 

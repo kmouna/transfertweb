@@ -29,7 +29,7 @@
             <tbody>
                 <?php $__currentLoopData = $ttesAgences; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $agence): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <td><img src="<?php echo e(asset('admin/dist/img/agence-logo.png')); ?>" class="direct-chat-img" alt="User Image">
+                    <td><img src="<?php echo e(asset('storage/agences')); ?>/<?php echo e($agence->logo); ?>" class="direct-chat-img" alt="Agence logo">
                         </td>
                     <td><?php echo e($agence->nom); ?></td>
                     <td><?php echo e($agence->Responsable); ?></td>

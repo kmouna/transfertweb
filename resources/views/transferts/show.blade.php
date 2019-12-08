@@ -78,7 +78,8 @@
                                         <i class="glyphicon glyphicon-time"></i>
                                     </div>
                                     {!! Form::time('heure_d',$leTransfert->heure_d,
-                                    ['id'=>'hdepTransGlobal','class' =>'form-control','required' => 'required']) !!}
+                                    ['id'=>'hdepTransGlobal','class' =>'form-control','readonly' => 'true']) !!}
+                                    <!-- à corriger lors de la mise à jour : il vaut mieux qu'elle soit à part-->
                                 </div>
                             </div>
                         </div>
@@ -90,7 +91,7 @@
                                         <i class="glyphicon glyphicon-time"></i>
                                     </div>
                                     {!! Form::time('heure_a',$leTransfert->heure_a,
-                                    ['id'=>'harrTransGlobal','class' => 'form-control' ]) !!}
+                                    ['id'=>'harrTransGlobal','class' => 'form-control', 'readonly' => 'true' ]) !!}
                                 </div>
                             </div>
                         </div>
@@ -119,13 +120,14 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Date Vol</th>
+                                        <th>Date </th>
                                         <th>N° Vol</th>
                                         <th>Heure Vol</th>
                                         <th>Départ</th>
                                         <th>Arrivée</th>
-                                        <th>Départ RTD.</th>
-                                        <th>Arrivée RTD.</th>
+                                        <th>Retardé</th>
+                                        <!--th>Départ RTD.</th>
+                                        <th>Arrivée RTD.</th-->
                                         <th>Hôtel </th>
                                         <th>Agence </th>
                                         <th>Nb. Pers.</th>
@@ -142,8 +144,13 @@
                                         <td>{{$ligne->heure_trans}}</td>
                                         <td>{{ $ligne->heure_d}}</td>
                                         <td>{{ $ligne->heure_a}}</td>
-                                        <td>{{ $ligne->heure_d_retard}}</td>
-                                        <td>{{ $ligne->heure_a_retard}}</td>
+                                        @if ( $ligne->heure_d_retard != '00:00:00')
+                                        <td style="font-weight:bold;color:red">Oui</td>
+                                        @else
+                                        <td>Non</td>
+                                        @endif
+                                        <!--td>{{ $ligne->heure_d_retard}}</td>
+                                        <td>{{ $ligne->heure_a_retard}}</td-->
                                         <td>{{$ligne->nom_hotel}}</td>
                                         <td>{{$ligne->nom_agence}}</td>
                                         <td>{{$ligne->nbperso}}</td>
@@ -152,13 +159,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Date Vol</th>
+                                        <th>Date </th>
                                         <th>N° Vol</th>
                                         <th>Heure Vol</th>
                                         <th>Départ</th>
                                         <th>Arrivée</th>
-                                        <th>Départ RTD.</th>
-                                        <th>Arrivée RTD.</th>
+                                        <th>Retardé</th>
+                                        <!--th>Départ RTD.</th>
+                                        <th>Arrivée RTD.</th-->
                                         <th>Hôtel </th>
                                         <th>Agence </th>
                                         <th>Nb. Pers.</th>
@@ -179,7 +187,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Date Vol</th>
+                                        <th>Date </th>
                                         <th>N° Vol</th>
                                         <th>Heure Vol</th>
                                         <th>Départ</th>
@@ -217,10 +225,12 @@
                                         <td>
                                             <div class="box-tools text-center">
                                                 <!--?php $idtransclic = $unTransInter->id; ?-->
-                                                {{ Form::hidden('cachedepartTransglobal',$leTransfert->heure_d,
+                                                <!-- ça marche pas la mise à jour jquery change-->
+                                                <!-- à corriger lors de la mise à jour : il vaut mieux qu'elle soit à part-->
+                                                {{-- Form::hidden('cachedepartTransglobal','',
                                                 ['class' => 'form-control','id'=>'departTransglobal'])}}
-                                                {{ Form::hidden('cachearriveeTransglobal',$leTransfert->heure_a,
-                                                ['class' => 'form-control','id'=>'arriveeTransglobal'])}}
+                                                {{ Form::hidden('cachearriveeTransglobal','',
+                                                ['class' => 'form-control','id'=>'arriveeTransglobal'])--}}
                                                 {{ Form::hidden('cachenbpTotal',$leTransfert->nbpersonnes,
                                                 ['class' => 'form-control','id'=>'nbpTotal'])}}
 
@@ -238,7 +248,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Date Vol</th>
+                                        <th>Date </th>
                                         <th>N° Vol</th>
                                         <th>Heure Vol</th>
                                         <th>Départ</th>

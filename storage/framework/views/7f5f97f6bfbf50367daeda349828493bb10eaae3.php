@@ -11,10 +11,10 @@
             $etat = 'En attente';
         }
         elseif ($status == 2) {
-            $etat = 'Planifiée';
+            $etat = 'Planifiées';
         }
         elseif ($status == 3) {
-            $etat = 'Réalisée';
+            $etat = 'Réalisées';
         }
         ?>
         <h3 class="box-title">Liste des Demandes de Transfert <?php echo e($etat); ?> </h3>
@@ -30,8 +30,11 @@
                     <th>Heure</th>
                     <th>Départ</th>
                     <th>Arrivée</th>
-                    <th>Dép. RTD</th>
-                    <th>Arr. RTD</th>
+                    <?php if(($etat == "Planifiées")||($etat == "Réalisées")): ?>
+                    <th>Retardé</th>
+                    <?php endif; ?>
+                    <!--th>Dép. RTD</th>
+                    <th>Arr. RTD</th-->
                     <th>Origine</th>
                     <th>Hôtel </th>
                     <th>Agence </th>
@@ -47,7 +50,14 @@
                     <td><?php echo e($unTransEtat->heure_trans); ?></td>
                     <td><?php echo e($unTransEtat->heure_d); ?></td>
                     <td><?php echo e($unTransEtat->heure_a); ?></td>
-                    <td class="text-center" style="color:red">
+                    <?php if(($etat == "Planifiées")||($etat == "Réalisées")): ?>
+                        <?php if( $unTransEtat->heure_d_retard != '00:00:00'): ?>
+                        <td style="font-weight:bold;color:red">Oui</td>
+                        <?php else: ?>
+                        <td>Non</td>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <!--td class="text-center" style="color:red">
                         <?php if( $unTransEtat->heure_d_retard != 0): ?>
                             <?php echo e($unTransEtat->heure_d_retard); ?>
 
@@ -62,7 +72,7 @@
                         <?php else: ?>
                             --:--
                         <?php endif; ?>
-                    </td>
+                    </td-->
                     <td><?php echo e($unTransEtat->origine); ?></td>
                     <td><?php echo e($unTransEtat->nom_hotel); ?></td>
                     <td><?php echo e($unTransEtat->nom_agence); ?></td>
@@ -81,8 +91,11 @@
                     <th>Heure</th>
                     <th>Départ</th>
                     <th>Arrivée</th>
-                    <th>Dép. RTD</th>
-                    <th>Arr. RTD</th>
+                    <?php if(($etat == "Planifiées")||($etat == "Réalisées")): ?>
+                    <th>Retardé</th>
+                    <?php endif; ?>
+                    <!--th>Dép. RTD</th>
+                    <th>Arr. RTD</th-->
                     <th>Origine</th>
                     <th>Hôtel </th>
                     <th>Agence </th>

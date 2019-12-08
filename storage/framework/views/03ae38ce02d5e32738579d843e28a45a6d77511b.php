@@ -122,24 +122,19 @@
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <?php echo Form::file('logo', ['class' => 'form-control',
-                                        'readonly' =>'readonly']); ?>
+                                        'onchange'=>'previewFile()']); ?>
 
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="<?php echo e(asset('storage/hotels')); ?>/<?php echo e($unHotel->logo); ?>"
+                                        <img src="<?php echo e(asset('storage/hotels')); ?>/<?php echo e($unHotel->logo); ?>" id="previewImg"
                                             class="direct-chat-img" alt="Hotel logo" />
-                                            <!--Pour avoir l'ancien nom du logo
-                                                si l'uti ne l'a pas changé -->
-                                        <?php echo e(Form::hidden('cachenomlogo',$unHotel->logo,
-                                                ['class' => 'form-control','id'=>'tdnbp'])); ?>
+                                            <?php echo e(Form::hidden('cachenomlogo',$unHotel->logo,
+                                            ['class' => 'form-control'])); ?>
 
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-                        </div-->
 
 
                     </div>

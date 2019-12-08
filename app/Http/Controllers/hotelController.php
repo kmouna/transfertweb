@@ -60,7 +60,7 @@ class hotelController extends Controller
                 'lattitude' => 'required',
                 'longitude'  => 'required',
                 'email' => 'required',
-                'logo' =>'image|nullable|max:10.000])'
+                'logo' =>'image|nullable|max:30.000])'
             ]);
 
             if($request->hasFile('logo'))
@@ -137,7 +137,7 @@ class hotelController extends Controller
             'lattitude' => 'required',
             'longitude'  => 'required',
             'email' => 'required',
-            'logo' =>'image|nullable|max:10.000])'
+            'logo' =>'image|nullable|max:30.000])'
             ]);
 
             if($request->hasFile('logo'))

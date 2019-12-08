@@ -20,7 +20,8 @@
                     <h3 class="box-title">Ajout d'un Chauffeur</h3>
                 </div>
                 <!-- /.box-header -->
-<?php echo Form::open(['action' => 'chauffeurController@store', 'method' => 'POST','enctype'=>'multipart/form-data']); ?>
+                <?php echo Form::open(['action' => 'chauffeurController@store', 'method' =>
+                'POST','enctype'=>'multipart/form-data']); ?>
 
 
                 <div class="box-body">
@@ -30,13 +31,15 @@
                             <div class="form-group">
                                 <?php echo Form::label('nom', 'Nom'); ?>
 
-                                <?php echo Form::text('nom','', ['class' => 'form-control', 'placeholder' => 'Nom chauffeur','required' => 'required']); ?>
+                                <?php echo Form::text('nom','', ['class' => 'form-control', 'placeholder' => 'Nom chauffeur',
+                                'required' => 'required']); ?>
 
                             </div>
                             <div class="form-group">
                                 <?php echo Form::label('prenom', 'Prénom'); ?>
 
-                                <?php echo Form::text('prenom','', ['class' => 'form-control', 'placeholder' => 'Prénom Chauffeur','required' => 'required']); ?>
+                                <?php echo Form::text('prenom','', ['class' => 'form-control',
+                                'placeholder' => 'Prénom Chauffeur','required' => 'required']); ?>
 
                             </div>
                             <div class="form-group">
@@ -85,7 +88,7 @@
 
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="glyphicon glyphicon-envelope"></i>
+                                        <i class="fa fa-lock"></i>
                                     </div>
                                     <?php echo Form::password ('motpasse', ['class' => 'form-control',
                                     'required' => 'required']); ?>
@@ -98,19 +101,17 @@
 
 
                                 <div class="input-group">
-
                                     <div class="input-group-addon">
-                                        <?php echo Form::file('photo',['class' => 'form-control',
-                                        'required' => 'required']); ?>
+                                        <?php echo Form::file('photo', ['class' => 'form-control',
+                                         'onchange'=>'previewFile()']); ?>
 
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="<?php echo e(asset('admin/dist/img/avatar.png')); ?>" class="direct-chat-img"
-                                            alt="User Image" />
+                                        <img src="<?php echo e(asset('admin/dist/img/avatar.png')); ?>" id="previewImg"
+                                            class="direct-chat-img" alt="Aperçu photo chauffeur" />
+
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -123,14 +124,14 @@
                                 <?php echo Form::textarea('adresse','', ['class' => 'form-control textarea']); ?>
 
                             </div>
-                                <?php echo Form::submit('Ajouter', ['class' => 'btn btn-success']); ?>
+                            <?php echo Form::submit('Ajouter', ['class' => 'btn btn-success']); ?>
 
                         </div>
 
 
                     </div>
                 </div> <!-- /.box-body -->
-<?php echo Form::close(); ?>
+                <?php echo Form::close(); ?>
 
 
             </div><!-- /.box -->

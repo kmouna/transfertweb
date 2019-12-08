@@ -27,7 +27,8 @@
                 <div class="box-body">
                         <div class="row">
                             <div class="col-md-6">
-                                {!! Form::open(['action' => ['agenceController@update',$uneAgence->id], 'method' => 'PUT']) !!}
+                                {!! Form::open(['action' => ['agenceController@update',$uneAgence->id],
+                                'method' => 'PUT', 'enctype'=>'multipart/form-data']) !!}
                                 <div class="form-group">
                                     {!! Form::label('nom', 'Nom') !!}
                                     {!! Form::text('nom',$uneAgence->nom, ['class' => 'form-control', 'placeholder' => 'Nom Agence',
@@ -80,22 +81,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('logo', 'Logo') !!}
+                                        {!! Form::label('logo', 'Logo') !!}
 
-                                    <div class="input-group">
-
-                                        <div class="input-group-addon">
-                                            {!! Form::text('logo',$uneAgence->logo, ['class' => 'form-control','required' =>
-                                            'required']) !!}
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <img src="{{asset('admin/dist/img/agence-logo.png')}}" class="direct-chat-img"
-                                                alt="User Image" />
+                                        <div class="input-group">
+                                            <div class="input-group-addon">
+                                                {!! Form::file('logo', ['class' => 'form-control',
+                                                'onchange'=>'previewFile()']) !!}
+                                            </div>
+                                            <div class="input-group-addon">
+                                                <img src="{{asset('storage/agences')}}/{{$uneAgence->logo}}" id="previewImg"
+                                                    class="direct-chat-img" alt="Agence logo" />
+                                                    {{ Form::hidden('cachenomlogoagence',$uneAgence->logo,
+                                                    ['class' => 'form-control'])}}
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                </div>
                             </div>
                             </div-->
 

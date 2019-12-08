@@ -32,16 +32,11 @@
                         <td><?php echo e($unTransfert->heure_d); ?></td>
                         <td><?php echo e($unTransfert->heure_a); ?></td>
                         <td><?php echo e($unTransfert->origine); ?></td>
-                        <td>
-                            <?php if($unTransfert->retarde == 0): ?>
-                            <?php echo e($rep = 'Non'); ?>
-
-                            <?php else: ?>
-                            <?php echo e($rep ='Oui'); ?>
-
-                            <?php endif; ?>
-                        </td>
-
+                        <?php if($unTransfert->retarde == 1): ?>
+                        <td style="font-weight:bold;color:red">Oui</td>
+                        <?php else: ?>
+                        <td>Non</td>
+                        <?php endif; ?>
                         <td><?php echo e($unTransfert->nbpersonnes); ?></td>
                         <td>
                             <a href="transferts/<?php echo e($unTransfert->id); ?>" class="btn btn-warning btn-xs">
@@ -52,7 +47,37 @@
 
                             <?php if($unTransfert->origine == 'Aéroport'): ?>
 
-                            <a href="<?php echo e(asset('transferts')); ?>/<?php echo e($unTransfert->id); ?>/edit" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-time"></i></a>
+                            <!--a href="<?php echo e(asset('transferts')); ?>/<?php echo e($unTransfert->id); ?>/edit" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-time"></i></a-->
+                            <a type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                                data-target="#modal-retard-<?php echo e($unTransfert->id); ?>">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </a>
+                            <div class="modal modal-primary fade" id="modal-retard-<?php echo e($unTransfert->id); ?>">
+                                <?php echo Form::open(['action' => ['transfertController@update',
+                                $unTransfert->id],'method'=>'PUT']); ?>
+
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Retard du Transfert</h4>
+                                        </div>
+                                        <div class="modal-body"
+                                            style="color:#367FA9!important;background-color: white!important">
+                                            <p>Etes vous sûr(e) de confirmer le retard de ce transfert ?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline pull-left"
+                                                data-dismiss="modal">Non</button>
+                                            <button type="submit" class="btn btn-outline">Oui</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                                <?php echo Form::close(); ?>
+
+                            </div>
+                            <!-- /.modal -->
 
                             <?php endif; ?>
 

@@ -119,14 +119,14 @@
              //alert('hello plus');
               ajoutnbpersonnes();
          });
-         $("#hdepTransGlobal").on("keydown keyup", function(){
+        /*$("#hdepTransGlobal").on("keydown keyup", function(){
             var x = document.getElementById('hdepTransGlobal').value;
             document.getElementById('departTransglobal').value = x;
          });
          $("#harrTransGlobal").on("keydown keyup", function(){
             var y = document.getElementById('harrTransGlobal').value ;
             document.getElementById('arriveeTransglobal').value =  y;
-         });
+         });*/
 
       });
 

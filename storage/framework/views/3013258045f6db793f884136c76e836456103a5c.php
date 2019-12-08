@@ -4,7 +4,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?php echo e(asset('admin/dist/img/user2-160x160.jpg')); ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo e(asset('storage/users')); ?>/<?php echo e(Auth::user()->photo); ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p><?php echo e(Auth::user()->name); ?></p>

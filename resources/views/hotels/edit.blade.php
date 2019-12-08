@@ -111,22 +111,17 @@
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         {!! Form::file('logo', ['class' => 'form-control',
-                                        'readonly' =>'readonly']) !!}
+                                        'onchange'=>'previewFile()']) !!}
                                     </div>
                                     <div class="input-group-addon">
-                                        <img src="{{asset('storage/hotels')}}/{{$unHotel->logo}}"
+                                        <img src="{{asset('storage/hotels')}}/{{$unHotel->logo}}" id="previewImg"
                                             class="direct-chat-img" alt="Hotel logo" />
-                                            <!--Pour avoir l'ancien nom du logo
-                                                si l'uti ne l'a pas changé -->
-                                        {{ Form::hidden('cachenomlogo',$unHotel->logo,
-                                                ['class' => 'form-control','id'=>'tdnbp'])}}
+                                            {{ Form::hidden('cachenomlogo',$unHotel->logo,
+                                            ['class' => 'form-control'])}}
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-                        </div-->
 
 
                     </div>

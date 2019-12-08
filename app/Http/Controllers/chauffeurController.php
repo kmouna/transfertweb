@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Chauffeur;
+
 
 class chauffeurController extends Controller
 {
@@ -58,7 +60,7 @@ class chauffeurController extends Controller
             'prenom' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'photo' =>'image|nullable|max:10.000])'
+            'photo' =>'image|nullable|max:30.000])'
         ]);
 
         if($request->hasFile('photo'))
@@ -92,7 +94,7 @@ class chauffeurController extends Controller
         );
 
         return redirect('chauffeurs')->with($notification);*/
-       $msg = 'chauffeur ajouté avec succès';
+       //$msg = 'chauffeur ajouté avec succès';
        return redirect('chauffeurs');//->with('success','msg');
     }
 
@@ -136,8 +138,8 @@ class chauffeurController extends Controller
             'prenom' => 'required',
             'mobile' => 'required',
             'email' => 'required',
-            'motpasse' => 'required',
-            'photo' =>'image|nullable|max:10.000])'
+            //'motpasse' => 'required',
+            'photo' =>'image|nullable|max:30.000])'
         ]);
 
         if($request->hasFile('photo'))
@@ -150,9 +152,10 @@ class chauffeurController extends Controller
         }
         else
         {
+            //conservé depuis l'ancienne valeur
             $fich = $request->input('cachenomphoto');
-        }
 
+        }
         $chauffeur = Chauffeur::find($id);
         $chauffeur->nom = $request->input('nom');
         $chauffeur->prenom = $request->input('prenom');
@@ -161,7 +164,7 @@ class chauffeurController extends Controller
         $chauffeur->telfixe = 0;
         $chauffeur->mobile = $request->input('mobile');
         $chauffeur->email = $request->input('email');
-        $chauffeur->motpasse = $request->input('motpasse');
+        //$chauffeur->motpasse = $request->input('motpasse');
         $chauffeur->photo = $fich;//$request->input('photo');
         $chauffeur->note = 0;
         $chauffeur->save();
